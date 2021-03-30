@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Configurations>Debug;Release;Devlab;Local;Stable;IG</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+    <PackageReference Include="ServiceStack" Version="5.10.4" />
+    <PackageReference Include="ServiceStack.HttpClient" Version="5.10.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\com.system\com.system.csproj" />
+  </ItemGroup>
+
+</Project>
