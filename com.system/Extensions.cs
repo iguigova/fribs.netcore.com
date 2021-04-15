@@ -55,6 +55,46 @@ namespace com.system
             return value;
         }
 
+        public static IEnumerable<object> GetKeysByValue(this IDictionary data, object value)
+        {
+            var keys = new HashSet<object>();
+
+            foreach(DictionaryEntry dictionaryEntry in data)
+            {
+                if (dictionaryEntry.Value == value)
+                {
+                    keys.Add(dictionaryEntry.Key);
+                }
+            }
+
+            return keys;
+        }
+
+        public static void PopKeysByValue(this IDictionary data, object value)
+        {
+            var keys = GetKeysByValue(data, value);
+
+            foreach(var key in keys)
+            {
+                data.Remove(key);
+            }
+        }
+
+        public static IEnumerable<TKey> GetKeysByValue<TKey, TValue>(this IDictionary<TKey, TValue> data, TValue value)
+        {
+            return data.Where(s => s.Value.Equals(value)).Select(s => s.Key);
+        }
+
+        public static void PopKeysByValue<TKey, TValue>(this IDictionary<TKey, TValue> data, TValue value)
+        {
+            var keys = GetKeysByValue(data, value);
+
+            foreach (var key in keys)
+            {
+                data.Remove(key);
+            }
+        }
+
         public static bool? ToBool(this string value)
         {
             return bool.TryParse(value, out bool result) ? result : (bool?)null;

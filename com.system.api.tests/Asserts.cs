@@ -54,7 +54,7 @@ namespace com.system.api.tests
         {
             var (httpResponseMessage, response) = result;
 
-            if (!httpResponseMessage.IsSuccessStatusCode || (response?.ToJson().Contains("error") ?? false))
+            if (!httpResponseMessage.IsSuccessStatusCode) // || (response?.ToJson().Contains("error") ?? false))
             {
                 throw new AssertFailedException($"Returned {httpResponseMessage.StatusCode} {response.ToJson()}");
             }
